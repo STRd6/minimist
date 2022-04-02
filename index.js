@@ -104,10 +104,7 @@ module.exports = function (args, opts) {
         var arg = args[i];
         
         if (/^--.+=/.test(arg)) {
-            // Using [\s\S] instead of . because js doesn't support the
-            // 'dotall' regex modifier. See:
-            // http://stackoverflow.com/a/1068308/13216
-            var m = arg.match(/^--([^=]+)=([\s\S]*)$/);
+            var m = arg.match(/^--([^=]+)=(.*)$/s);
             var key = m[1];
             var value = m[2];
             if (flags.bools[key]) {
